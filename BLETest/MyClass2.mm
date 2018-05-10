@@ -1,12 +1,3 @@
-//
-//  MyClass2.m
-//  BLETest
-//
-//  Created by TY on 2018/05/08.
-//  Copyright © 2018年 yamatakajp. All rights reserved.
-//
-
-#import <Foundation/Foundation.h>
 
 //
 //  MyClass2.m
@@ -31,20 +22,10 @@
 #import "PNGQuant/PNGQuant.h"
 #include <cstring>
 #include "lodepng.h"
+#include "MyClass2.h"
 //#import <PNGQuant/PublicHeader.h>
 
-@interface MyClass2 : NSObject {
-    size_t _bitsPerPixel;
-    size_t _bitsPerComponent;
-    size_t _width;
-    size_t _height;
-    size_t _bytesPerRow;
 
-    size_t _speed;
-    size_t _gamma;
-
-}
-@end
 
 @implementation MyClass2 : NSObject
 
@@ -92,6 +73,10 @@
 
 -(NSData *) quantizedImageData:(NSData *)data
 {
+
+    _speed = 1;
+    _gamma = 0;
+
     unsigned char *bitmap = (unsigned char *)[data bytes];
 
     unsigned char **rows = (unsigned char **)malloc(_height * sizeof(unsigned char *));
@@ -103,7 +88,8 @@
 
     //create liq attribute
     liq_attr *liq = liq_attr_create();
-    liq_set_speed(liq, _speed);
+//    liq_set_speed(liq, _speed);
+    liq_set_speed(liq, 1);
 
     liq_image *img = liq_image_create_rgba_rows(liq,
                                                 (void **)rows,

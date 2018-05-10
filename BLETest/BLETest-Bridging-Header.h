@@ -9,5 +9,6 @@
 #ifndef BLETest_Bridging_Header_h
 #define BLETest_Bridging_Header_h
 
+#import "MyClass2.h"
 
 #endif /* BLETest_Bridging_Header_h */

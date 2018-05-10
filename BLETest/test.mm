@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <PNGQuant/PNGQuant.h>
+#import "PNGQuant/PNGQuant.h"
 #include <cstring>
+#include "lodepng.h"
 //#import <PNGQuant/PublicHeader.h>
 
 @interface MyClass : NSObject {

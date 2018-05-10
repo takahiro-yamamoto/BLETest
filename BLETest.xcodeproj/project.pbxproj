@@ -7,21 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78872CE420A178D7000C6774 /* test.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78872CE320A178D7000C6774 /* test.mm */; };
+		78872CED20A19A64000C6774 /* lodepng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 78872CEB20A19A64000C6774 /* lodepng.cpp */; };
+		78872D0120A19C29000C6774 /* blur.c in Sources */ = {isa = PBXBuildFile; fileRef = 78872CF420A19C27000C6774 /* blur.c */; };
+		78872D0220A19C29000C6774 /* mempool.c in Sources */ = {isa = PBXBuildFile; fileRef = 78872CF520A19C27000C6774 /* mempool.c */; };
+		78872D0320A19C29000C6774 /* kmeans.c in Sources */ = {isa = PBXBuildFile; fileRef = 78872CF620A19C27000C6774 /* kmeans.c */; };
+		78872D0420A19C29000C6774 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78872CF720A19C28000C6774 /* Info.plist */; };
+		78872D0520A19C29000C6774 /* mediancut.c in Sources */ = {isa = PBXBuildFile; fileRef = 78872CF820A19C28000C6774 /* mediancut.c */; };
+		78872D0620A19C29000C6774 /* libimagequant.c in Sources */ = {isa = PBXBuildFile; fileRef = 78872CFB20A19C28000C6774 /* libimagequant.c */; };
+		78872D0720A19C29000C6774 /* pam.c in Sources */ = {isa = PBXBuildFile; fileRef = 78872CFC20A19C28000C6774 /* pam.c */; };
+		78872D0820A19C29000C6774 /* nearest.c in Sources */ = {isa = PBXBuildFile; fileRef = 78872CFF20A19C29000C6774 /* nearest.c */; };
+		78872D0C20A1B3D6000C6774 /* MyClass2.mm in Sources */ = {isa = PBXBuildFile; fileRef = 78872D0B20A1B3D5000C6774 /* MyClass2.mm */; };
 		78BFA5792091787500901F0C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA5782091787500901F0C /* AppDelegate.swift */; };
-		78BFA57B2091787500901F0C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA57A2091787500901F0C /* ViewController.swift */; };
+		78BFA57B2091787500901F0C /* CentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA57A2091787500901F0C /* CentralViewController.swift */; };
 		78BFA57E2091787500901F0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78BFA57C2091787500901F0C /* Main.storyboard */; };
 		78BFA5802091787700901F0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78BFA57F2091787700901F0C /* Assets.xcassets */; };
 		78BFA5832091787700901F0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78BFA5812091787700901F0C /* LaunchScreen.storyboard */; };
+		78BFA58B2091867900901F0C /* PeripheralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA58A2091867900901F0C /* PeripheralViewController.swift */; };
+		78BFA58D2091894700901F0C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA58C2091894700901F0C /* Config.swift */; };
+		78BFA58F20918F8500901F0C /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA58E20918F8500901F0C /* SelectViewController.swift */; };
+		78BFA5912091B54600901F0C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA5902091B54600901F0C /* StringExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78872CE320A178D7000C6774 /* test.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = test.mm; sourceTree = "<group>"; };
+		78872CEB20A19A64000C6774 /* lodepng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lodepng.cpp; sourceTree = "<group>"; };
+		78872CEC20A19A64000C6774 /* lodepng.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lodepng.h; sourceTree = "<group>"; };
+		78872CF120A19C27000C6774 /* nearest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = nearest.h; path = PNGQuant/nearest.h; sourceTree = "<group>"; };
+		78872CF220A19C27000C6774 /* PNGQuant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNGQuant.h; path = PNGQuant/PNGQuant.h; sourceTree = "<group>"; };
+		78872CF320A19C27000C6774 /* mediancut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mediancut.h; path = PNGQuant/mediancut.h; sourceTree = "<group>"; };
+		78872CF420A19C27000C6774 /* blur.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = blur.c; path = PNGQuant/blur.c; sourceTree = "<group>"; };
+		78872CF520A19C27000C6774 /* mempool.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mempool.c; path = PNGQuant/mempool.c; sourceTree = "<group>"; };
+		78872CF620A19C27000C6774 /* kmeans.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = kmeans.c; path = PNGQuant/kmeans.c; sourceTree = "<group>"; };
+		78872CF720A19C28000C6774 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PNGQuant/Info.plist; sourceTree = "<group>"; };
+		78872CF820A19C28000C6774 /* mediancut.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mediancut.c; path = PNGQuant/mediancut.c; sourceTree = "<group>"; };
+		78872CF920A19C28000C6774 /* blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = blur.h; path = PNGQuant/blur.h; sourceTree = "<group>"; };
+		78872CFA20A19C28000C6774 /* libimagequant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libimagequant.h; path = PNGQuant/libimagequant.h; sourceTree = "<group>"; };
+		78872CFB20A19C28000C6774 /* libimagequant.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libimagequant.c; path = PNGQuant/libimagequant.c; sourceTree = "<group>"; };
+		78872CFC20A19C28000C6774 /* pam.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = pam.c; path = PNGQuant/pam.c; sourceTree = "<group>"; };
+		78872CFD20A19C29000C6774 /* kmeans.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = kmeans.h; path = PNGQuant/kmeans.h; sourceTree = "<group>"; };
+		78872CFE20A19C29000C6774 /* pam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = pam.h; path = PNGQuant/pam.h; sourceTree = "<group>"; };
+		78872CFF20A19C29000C6774 /* nearest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = nearest.c; path = PNGQuant/nearest.c; sourceTree = "<group>"; };
+		78872D0020A19C29000C6774 /* mempool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mempool.h; path = PNGQuant/mempool.h; sourceTree = "<group>"; };
+		78872D0B20A1B3D5000C6774 /* MyClass2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MyClass2.mm; sourceTree = "<group>"; };
+		78872D0D20A1B426000C6774 /* BLETest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BLETest-Bridging-Header.h"; sourceTree = "<group>"; };
+		78872D0E20A1B4AE000C6774 /* MyClass2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyClass2.h; sourceTree = "<group>"; };
 		78BFA5752091787500901F0C /* BLETest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLETest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78BFA5782091787500901F0C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		78BFA57A2091787500901F0C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		78BFA57A2091787500901F0C /* CentralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralViewController.swift; sourceTree = "<group>"; };
 		78BFA57D2091787500901F0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78BFA57F2091787700901F0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78BFA5822091787700901F0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78BFA5842091787700901F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78BFA58A2091867900901F0C /* PeripheralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralViewController.swift; sourceTree = "<group>"; };
+		78BFA58C2091894700901F0C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		78BFA58E20918F8500901F0C /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
+		78BFA5902091B54600901F0C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,11 +76,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78872CE520A17B0D000C6774 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		78BFA56C2091787500901F0C = {
 			isa = PBXGroup;
 			children = (
 				78BFA5772091787500901F0C /* BLETest */,
 				78BFA5762091787500901F0C /* Products */,
+				78872CE520A17B0D000C6774 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,11 +104,37 @@
 			isa = PBXGroup;
 			children = (
 				78BFA5782091787500901F0C /* AppDelegate.swift */,
-				78BFA57A2091787500901F0C /* ViewController.swift */,
+				78BFA57A2091787500901F0C /* CentralViewController.swift */,
+				78BFA58A2091867900901F0C /* PeripheralViewController.swift */,
 				78BFA57C2091787500901F0C /* Main.storyboard */,
 				78BFA57F2091787700901F0C /* Assets.xcassets */,
 				78BFA5812091787700901F0C /* LaunchScreen.storyboard */,
+				78872CF920A19C28000C6774 /* blur.h */,
 				78BFA5842091787700901F0C /* Info.plist */,
+				78BFA58C2091894700901F0C /* Config.swift */,
+				78BFA58E20918F8500901F0C /* SelectViewController.swift */,
+				78BFA5902091B54600901F0C /* StringExtensions.swift */,
+				78872CE320A178D7000C6774 /* test.mm */,
+				78872CEB20A19A64000C6774 /* lodepng.cpp */,
+				78872CEC20A19A64000C6774 /* lodepng.h */,
+				78872CF420A19C27000C6774 /* blur.c */,
+				78872CF720A19C28000C6774 /* Info.plist */,
+				78872CF620A19C27000C6774 /* kmeans.c */,
+				78872CFD20A19C29000C6774 /* kmeans.h */,
+				78872CFB20A19C28000C6774 /* libimagequant.c */,
+				78872CFA20A19C28000C6774 /* libimagequant.h */,
+				78872CF820A19C28000C6774 /* mediancut.c */,
+				78872CF320A19C27000C6774 /* mediancut.h */,
+				78872CF520A19C27000C6774 /* mempool.c */,
+				78872D0020A19C29000C6774 /* mempool.h */,
+				78872CFF20A19C29000C6774 /* nearest.c */,
+				78872CF120A19C27000C6774 /* nearest.h */,
+				78872CFC20A19C28000C6774 /* pam.c */,
+				78872CFE20A19C29000C6774 /* pam.h */,
+				78872CF220A19C27000C6774 /* PNGQuant.h */,
+				78872D0E20A1B4AE000C6774 /* MyClass2.h */,
+				78872D0B20A1B3D5000C6774 /* MyClass2.mm */,
+				78872D0D20A1B426000C6774 /* BLETest-Bridging-Header.h */,
 			);
 			path = BLETest;
 			sourceTree = "<group>";
@@ -96,6 +171,7 @@
 				TargetAttributes = {
 					78BFA5742091787500901F0C = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -122,6 +198,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78872D0420A19C29000C6774 /* Info.plist in Resources */,
 				78BFA5832091787700901F0C /* LaunchScreen.storyboard in Resources */,
 				78BFA5802091787700901F0C /* Assets.xcassets in Resources */,
 				78BFA57E2091787500901F0C /* Main.storyboard in Resources */,
@@ -135,7 +212,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78BFA57B2091787500901F0C /* ViewController.swift in Sources */,
+				78872D0120A19C29000C6774 /* blur.c in Sources */,
+				78872CE420A178D7000C6774 /* test.mm in Sources */,
+				78872D0520A19C29000C6774 /* mediancut.c in Sources */,
+				78872D0C20A1B3D6000C6774 /* MyClass2.mm in Sources */,
+				78BFA5912091B54600901F0C /* StringExtensions.swift in Sources */,
+				78872D0220A19C29000C6774 /* mempool.c in Sources */,
+				78BFA58F20918F8500901F0C /* SelectViewController.swift in Sources */,
+				78872D0820A19C29000C6774 /* nearest.c in Sources */,
+				78872D0320A19C29000C6774 /* kmeans.c in Sources */,
+				78BFA57B2091787500901F0C /* CentralViewController.swift in Sources */,
+				78872D0620A19C29000C6774 /* libimagequant.c in Sources */,
+				78BFA58D2091894700901F0C /* Config.swift in Sources */,
+				78872D0720A19C29000C6774 /* pam.c in Sources */,
+				78872CED20A19A64000C6774 /* lodepng.cpp in Sources */,
+				78BFA58B2091867900901F0C /* PeripheralViewController.swift in Sources */,
 				78BFA5792091787500901F0C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,15 +371,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T9YT3A4M6N;
 				INFOPLIST_FILE = BLETest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yamatakajp.BLETest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BLETest/BLETest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -298,15 +393,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T9YT3A4M6N;
 				INFOPLIST_FILE = BLETest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yamatakajp.BLETest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BLETest/BLETest-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
