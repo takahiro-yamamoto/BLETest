@@ -8,56 +8,79 @@
 
 import UIKit
 import CoreBluetooth
+import MultipeerConnectivity
 
 class PeripheralViewController: UIViewController, CBPeripheralManagerDelegate, CBPeripheralDelegate {
 
     var manager: CBPeripheralManager!
-
-    var imageDataChara1: CBCharacteristic!
-    var imageDataChara2: CBMutableCharacteristic!
+    var imageDataChara: CBCharacteristic!
 
     var image: UIImage!
-    var imageData1: Data!
-    var imageData2: Data!
+    var imageData: Data!
 
-    var imageDataCnt1 = 0
+    var imageDataCnt = 0
 
-    var currentOffset1 = 0
-    var currentOffset2 = 0
+    var currentOffset = 0
 
-    let label1 = UILabel()
-    let label2 = UILabel()
+    let label = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        manager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
-        self.view.backgroundColor = UIColor.white
+//        // Do any additional setup after loading the view.
+//        manager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
+//        self.view.backgroundColor = UIColor.white
+//
+//        imageData = UIImagePNGRepresentation(UIImage(named: "tako")!)
+//        imageDataCnt = imageData.count
 
-        let s = UIImage(named: "tako")!.size
-        let newSize = CGSize(width: s.width * 0.6, height: s.height * 0.6)
+        label.textColor = UIColor.blue
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.frame.size = CGSize(width: 240, height: 120)
+        label.textAlignment = .center
+        label.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 - 60)
+        self.view.addSubview(label)
 
-        //        imageData1 = UIImagePNGRepresentation(UIImage(named: "tako")!)
-//        imageData1 = UIImageJPEGRepresentation(UIImage(named: "tako")!, 0.5)
+        P2PConnectivity.manager.start(
+            serviceType: "MIKE-SIMPLE-P2P",
+            displayName: UIDevice.current.name,
+            stateChangeHandler: { state in
+                print(state)
+                // 接続状況の変化した時の処理
+        }, recieveHandler: { data in
+            print("receive")
+            // データを受信した時の処理
+        })
+
+        let btn = UIButton()
+        btn.frame.origin = CGPoint(x: 200, y: 200)
+        btn.frame.size = CGSize(width: 100, height: 100)
+        btn.addTarget(self, action: #selector(self.tap(sender:)), for: .touchUpInside)
+        btn.setTitle("send", for: .normal)
+        btn.setTitleColor(UIColor.white, for: .normal)
+        self.view.addSubview(btn)
+
         let my = MyClass2()
-        imageData1 = my.quantizedImageData(my.rgba(from: UIImage(named: "tako")!))
-        imageDataCnt1 = imageData1.count
-        //        imageData2 = UIImagePNGRepresentation(UIImage(named: "star")!)
+//        takoData = my.quantizedImageData(my.rgba(from: UIImage(named: "tako")!))
+        takoData = UIImagePNGRepresentation(UIImage(named: "tako")!)
+        print(takoData.count)
+    }
+    var takoData: Data!
+var cnt=0
+    @objc func tap(sender: UIButton) {
 
-        label1.textColor = UIColor.blue
-        label1.font = UIFont.boldSystemFont(ofSize: 20)
-        label1.frame.size = CGSize(width: 240, height: 120)
-        label1.textAlignment = .center
-        label1.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 - 60)
-        self.view.addSubview(label1)
+        let my = MyClass2()
+//        imageData = my.quantizedImageData(my.rgba(from: UIImage(named: "tako")!))
+        if cnt % 2 == 0 {
+imageData = takoData
+        } else {
+imageData = UIImagePNGRepresentation(UIImage(named: "sakana")!)
+        }
+        self.label.text = "start!!! \(cnt)"
 
-        label2.textColor = UIColor.blue
-        label2.font = UIFont.boldSystemFont(ofSize: 20)
-        label2.frame.size = CGSize(width: 240, height: 120)
-        label2.textAlignment = .center
-        label2.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 + 60)
-        self.view.addSubview(label2)
+        cnt+=1;
+        P2PConnectivity.manager.sendData(data: imageData)
+//        P2PConnectivity.manager.send(message: "koreda")
     }
 
     override func didReceiveMemoryWarning() {
@@ -93,17 +116,13 @@ class PeripheralViewController: UIViewController, CBPeripheralManagerDelegate, C
             break
         }
 
-        // 画像データ1
-        imageDataChara1 = CBMutableCharacteristic(type: imageDataCharaUUID1, properties: [CBCharacteristicProperties.read,CBCharacteristicProperties.notify], value: nil, permissions: .readable)
-
-        // 画像データ2
-        //        imageDataChara2 = CBMutableCharacteristic(type: imageDataCharaUUID2, properties: [CBCharacteristicProperties.read,CBCharacteristicProperties.notify], value: nil, permissions: .readable)
+        // 画像データ
+        imageDataChara = CBMutableCharacteristic(type: imageDataCharaUUID1, properties: [CBCharacteristicProperties.read,CBCharacteristicProperties.notify], value: nil, permissions: .readable)
 
         // primary = trueの場合は主サービス
         // サービスに他のサービスをぶら下げることもできる
         let service = CBMutableService(type: serviceUUID, primary: true)
-        service.characteristics = [imageDataChara1]
-        //        service.characteristics = [imageDataChara1, imageDataChara2]
+        service.characteristics = [imageDataChara]
 
         // serviceの追加
         manager.add(service)
@@ -135,32 +154,18 @@ class PeripheralViewController: UIViewController, CBPeripheralManagerDelegate, C
         let s = 182
         switch request.characteristic.uuid {
         case imageDataCharaUUID1:
-            if currentOffset1 < 0 {
-                break
-            }
-            if currentOffset1 >= imageDataCnt1 {
+            if currentOffset < 0 {
                 break
             }
 
-            if currentOffset1 <= imageDataCnt1 {
-                request.value = imageData1.subdata(in: currentOffset1...min(currentOffset1 + s, imageDataCnt1) - 1)
-                self.label1.text = "\(currentOffset1...min(currentOffset1 + s, imageDataCnt1) - 1) sending"
-                currentOffset1 = currentOffset1 + s;
-                manager.respond(to: request, withResult: .success)
-            }
-            break
-        case imageDataCharaUUID2:
-            if currentOffset2 < 0 {
-                break
-            }
-            if currentOffset2 >= imageData2.count {
+            if currentOffset >= imageDataCnt {
                 break
             }
 
-            if currentOffset2 <= imageData2.count {
-                request.value = imageData2.subdata(in: currentOffset2...min(currentOffset2 + s, imageData2.count) - 1)
-                self.label2.text = "\(currentOffset2...min(currentOffset2 + s, imageData2.count) - 1) sending"
-                currentOffset2 = currentOffset2 + s;
+            if currentOffset <= imageDataCnt {
+                request.value = imageData.subdata(in: currentOffset...min(currentOffset + s, imageDataCnt) - 1)
+                self.label.text = "\(currentOffset...min(currentOffset + s, imageDataCnt) - 1) sending"
+                currentOffset = currentOffset + s;
                 manager.respond(to: request, withResult: .success)
             }
             break

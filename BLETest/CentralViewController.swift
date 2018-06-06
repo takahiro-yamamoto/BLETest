@@ -8,46 +8,57 @@
 
 import UIKit
 import CoreBluetooth
+import MultipeerConnectivity
 
 class CentralViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate {
 
     var centralManager: CBCentralManager!
-
     var knownPeripferal: CBPeripheral!
+    var dataCharacterisic: CBCharacteristic!
 
-    let label1 = UILabel()
-    let label2 = UILabel()
-
+    let label = UILabel()
     let secLabel = UILabel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Central"
-        // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = UIColor.black
-        // mainQueueで実行される
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+//        self.navigationItem.title = "Central"
+//        self.view.backgroundColor = UIColor.black
+//        centralManager = CBCentralManager(delegate: self, queue: nil)
+//
+//
+//        label.textColor = UIColor.blue
+//        label.font = UIFont.boldSystemFont(ofSize: 20)
+//        label.frame.size = CGSize(width: 240, height: 120)
+//        label.textAlignment = .center
+//        label.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 - 40)
+//        self.view.addSubview(label)
+//
+//        secLabel.textColor = UIColor.green
+//        secLabel.font = UIFont.boldSystemFont(ofSize: 24)
+//        self.view.addSubview(secLabel)
 
+        P2PConnectivity.manager.start(
+            serviceType: "MIKE-SIMPLE-P2P",
+            displayName: UIDevice.current.name,
+            stateChangeHandler: { state in
+                // 接続状況の変化した時の処理
+                print(state)
+        }, recieveHandler: { data in
+            print("koko receive!!!")
 
-        label1.textColor = UIColor.blue
-        label1.font = UIFont.boldSystemFont(ofSize: 20)
-        label1.frame.size = CGSize(width: 240, height: 120)
-        label1.textAlignment = .center
-        label1.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 - 40)
-        self.view.addSubview(label1)
+            DispatchQueue.main.async {
+                let iv = UIImageView()
+                iv.image = UIImage(data: data)
+                iv.frame.size = CGSize(width: 384, height: 256)
+                iv.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 - 40)
+                self.view.addSubview(iv)
+            }
 
-        label2.textColor = UIColor.blue
-        label2.font = UIFont.boldSystemFont(ofSize: 20)
-        label2.frame.size = CGSize(width: 240, height: 120)
-        label2.textAlignment = .center
-        label2.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 + 40)
-        self.view.addSubview(label2)
-
-        secLabel.textColor = UIColor.green
-        secLabel.font = UIFont.boldSystemFont(ofSize: 24)
-        self.view.addSubview(secLabel)
-
-
+//            self.secLabel.text = "\(Date().timeIntervalSince(self.start!)) sec"
+//            self.secLabel.sizeToFit()
+//            self.secLabel.center = CGPoint(x: self.view.frame.width / 2, y: 180)
+            // データを受信した時の処理
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -115,16 +126,13 @@ class CentralViewController: UIViewController, CBCentralManagerDelegate, CBPerip
 
     }
 
-    var dataCharacterisic1: CBCharacteristic!
-    var dataCharacterisic2: CBCharacteristic!
+
 
     // サービスの特性が見つかった
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         service.characteristics?.forEach({ (characteristic) in
             if characteristic.uuid == imageDataCharaUUID1 {
-                dataCharacterisic1 = characteristic
-            } else if characteristic.uuid == imageDataCharaUUID2 {
-                dataCharacterisic2 = characteristic
+                dataCharacterisic = characteristic
             }
 
             //            peripheral.setNotifyValue(true, for: characteristic)
@@ -138,13 +146,9 @@ class CentralViewController: UIViewController, CBCentralManagerDelegate, CBPerip
     // 特性の値の読み取り完了。あるいは特性の値が変化した
     // 特性の値はいつも読み取り可能とは限らない。
     // 読み取れなかった場合は、error != nil となる
-    var imageData1: Data! = Data()
-    var imageData2: Data! = Data()
+    var imageData: Data! = Data()
 
     var start: Date?
-
-    var done1 = false
-    var done2 = false
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
 
@@ -157,7 +161,7 @@ class CentralViewController: UIViewController, CBCentralManagerDelegate, CBPerip
         if let e = error {
             print("error=\(e.localizedDescription)")
             if let d = data {
-                print(String(data: d, encoding: .utf8))
+                print(String(data: d, encoding: .utf8)!)
             }
         }
 
@@ -167,20 +171,11 @@ class CentralViewController: UIViewController, CBCentralManagerDelegate, CBPerip
                 return
             }
 
-            imageData1.append(data!)
-            label1.text = "\(imageData1.count)"
+            imageData.append(data!)
+            label.text = "\(imageData.count)"
 
-            // jpeg q=1 106372
-            // jpeg q=0.8 25998
-            // jpeg q=0.5
-            // 143004
-            // 83677
-            // 55976
-            // 38978
-            // 15902
-            // pnguant
-            if imageData1.count >= 44848 {
-                let imageUIImage = UIImage(data: imageData1)
+            if imageData.count >= 143004 {
+                let imageUIImage = UIImage(data: self.imageData)
                 DispatchQueue.main.async {
                     let iv = UIImageView()
                     iv.image = imageUIImage
@@ -188,54 +183,19 @@ class CentralViewController: UIViewController, CBCentralManagerDelegate, CBPerip
                     iv.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 - 40)
                     self.view.addSubview(iv)
 
-                    self.done1 = true
-                    self.check()
-
-
-                }
-                //                print("end")
-            } else {
-                peripheral.readValue(for: self.dataCharacterisic1)
-            }
-
-
-            return
-        } else if characteristic.uuid == imageDataCharaUUID2 {
-            if data == nil {
-                return
-            }
-
-            imageData2.append(data!)
-            label2.text = "\(imageData2.count)"
-
-            if imageData2.count >= 25792 {
-                let imageUIImage = UIImage(data: imageData2)
-                DispatchQueue.main.async {
-                    let iv = UIImageView()
-                    iv.image = imageUIImage
-                    iv.frame.size = CGSize(width: 384, height: 256)
-                    iv.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2 + 40)
-                    self.view.addSubview(iv)
-
-                    self.done2 = true
-                    self.check()
+                    self.secLabel.text = "\(Date().timeIntervalSince(self.start!)) sec"
+                    self.secLabel.sizeToFit()
+                    self.secLabel.center = CGPoint(x: self.view.frame.width / 2, y: 180)
                 }
 
             } else {
-                peripheral.readValue(for: self.dataCharacterisic2)
+                peripheral.readValue(for: self.dataCharacterisic)
             }
+
+
             return
         }
 
-    }
-
-    func check() {
-        //        if done1 && done2 {
-        print("DONE!!! \(Date().timeIntervalSince(start!))")
-        secLabel.text = "\(Date().timeIntervalSince(start!)) sec"
-        secLabel.sizeToFit()
-        secLabel.center = CGPoint(x: self.view.frame.width / 2, y: 180)
-        //        }
     }
 
     // 特性の値の変化をウォッチできるかわかると呼ばれる

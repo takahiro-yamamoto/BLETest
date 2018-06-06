@@ -27,6 +27,7 @@
 		78BFA58D2091894700901F0C /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA58C2091894700901F0C /* Config.swift */; };
 		78BFA58F20918F8500901F0C /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA58E20918F8500901F0C /* SelectViewController.swift */; };
 		78BFA5912091B54600901F0C /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BFA5902091B54600901F0C /* StringExtensions.swift */; };
+		78F3E68520C75BBF005FD8C5 /* P2PConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F3E68420C75BBF005FD8C5 /* P2PConnectivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		78BFA58C2091894700901F0C /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		78BFA58E20918F8500901F0C /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		78BFA5902091B54600901F0C /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		78F3E68420C75BBF005FD8C5 /* P2PConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = P2PConnectivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				78872D0E20A1B4AE000C6774 /* MyClass2.h */,
 				78872D0B20A1B3D5000C6774 /* MyClass2.mm */,
 				78872D0D20A1B426000C6774 /* BLETest-Bridging-Header.h */,
+				78F3E68420C75BBF005FD8C5 /* P2PConnectivity.swift */,
 			);
 			path = BLETest;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				78872CE420A178D7000C6774 /* test.mm in Sources */,
 				78872D0520A19C29000C6774 /* mediancut.c in Sources */,
 				78872D0C20A1B3D6000C6774 /* MyClass2.mm in Sources */,
+				78F3E68520C75BBF005FD8C5 /* P2PConnectivity.swift in Sources */,
 				78BFA5912091B54600901F0C /* StringExtensions.swift in Sources */,
 				78872D0220A19C29000C6774 /* mempool.c in Sources */,
 				78BFA58F20918F8500901F0C /* SelectViewController.swift in Sources */,
